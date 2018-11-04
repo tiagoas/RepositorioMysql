@@ -1,0 +1,42 @@
+﻿
+-- backup de um banco
+mysqldump -u root –p curso > C:\EAD\MYSQL\backup\arquivo_bk1.sql
+
+-- Backup 1 Tabela de um banco
+mysqldump -u root –p  curso  senso > C:\EAD\MYSQL\backup\arquivo_bk2.sql
+
+-- Backup 2 ou maisTabelas
+mysqldump -u root –p curso  senso aluno > C:\EAD\MYSQL\backup\arquivo_bk3.sql
+
+
+-- Backup mais de um Banco
+mysqldump -u root –p  --databases curso sakila > C:\EAD\MYSQL\backup\backup_dbs.sql
+
+-- Backup Todos bancos na instancia
+mysqldump -u root -p --all-databases > C:\EAD\MYSQL\backup\backup_geral.sql
+
+
+-- restaurando banco de dados
+
+-- Restore de um Banco
+
+create database curso_teste;
+
+mysql -u root –p curso < C:\EAD\MYSQL\backup\arquivo_bk1.sql
+
+-- restaurando backup em outro database
+
+mysql -u root –p curso_teste < C:\EAD\MYSQL\backup\arquivo_bk1.sql
+
+-- Backup Todos bancos na instancia
+mysql -u root -p < C:\EAD\MYSQL\backup\backup_geral.sql
+
+
+-- backup incluindo funçoes , procedures e triggers
+
+mysqldump -u root --routines --triggers -p curso > C:\EAD\MYSQL\backup\curso_bk.sql
+
+-- importando 
+mysql -u root –p curso_teste < C:\EAD\MYSQL\backup\curso_bk.sql
+
+

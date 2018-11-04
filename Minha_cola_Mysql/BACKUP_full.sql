@@ -1,0 +1,17 @@
+--BACKUP 
+
+USE MASTER
+
+ALTER DATABASE AdventureWorks2014 SET RECOVERY FULL
+
+BACKUP DATABASE AdventureWorks2014
+ TO DISK = 'C:\Cursos\Database\BK\AdventureWorks_FULL.BAK'
+   WITH STATS
+
+--DROP DATABASE
+DROP DATABASE AdventureWorks2014
+
+--RESTORE 
+RESTORE DATABASE AdventureWorks2014
+FROM  DISK = 'C:\Cursos\Database\BK\AdventureWorks_FULL.BAK'
+   WITH STATS,RECOVERY
